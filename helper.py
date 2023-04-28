@@ -93,7 +93,7 @@ def get_gpt_response(query, emb_df):
     response = {}
     emb_df.reset_index(inplace=True)
     prompt_prefix = '"""Based on the multiple product information below, respond to the users query as precisely as ' \
-                    'possible. Include product name, price and url relevant to the response. Also include alternate products if available. Separate the response in paragraphs. Otherwise say: Unfortunately, I am unable to respond to that.'
+                    'possible. Include product name, price and url in the response when available. Also include alternate products if available and separate the response in paragraphs. Otherwise say: Hmm, I am unable to respond to that.'
     prompt_suffix = '\nQuery: ' + query + "\n"
     prompt = ''
     for index, row in emb_df.iterrows():
