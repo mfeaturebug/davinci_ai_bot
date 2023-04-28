@@ -4,7 +4,7 @@ import streamlit as st
 import streamlit as st
 from helper import *
 
-st.title("Ask about your CRM contacts!")
+st.title("Ask Davinci!")
 # sim_val = st.slider('Select similarity',
 #                    min_value=0.0, max_value=1.0, step=0.01)
 
@@ -15,7 +15,7 @@ def main():
     if user_query != ":q" or user_query != "":
         # st.write(response['gpt_full_response']['choices'][0]['text'])
         response = get_contact_response(user_query)
-        # top_matches = response[response['similarity'] >= 0.75]
+        top_matches = response[response['similarity'] >= 0.75]
         display = response[['similarity', 'product_description', 'product_name', 'product_url']]
         st.write(display)
         return

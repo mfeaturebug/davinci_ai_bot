@@ -29,7 +29,6 @@ def cosine_similarity(a, b):
 
 # search through the reviews for a specific product
 def get_semantic_records(df, query, n=3):
-    print("Method: get_semantic_records")
     try:
         query_embedding = openai.Embedding.create(
             model='text-embedding-ada-002',
@@ -47,7 +46,6 @@ def get_semantic_records(df, query, n=3):
 
 
 def get_gpt_response(context, query):
-    print("Method: get_gpt_response")
     context = context.iloc[0]
     prefix = 'Use the below text to answer the subsequent question in under 10 sentences. If the answer cannot be found in the text, write "I could not find an answer."'
     prefix = prefix + '\n\nText: ' + context['text']
@@ -73,7 +71,6 @@ def get_gpt_response(context, query):
 
 
 def get_contact_response(query):
-    print("Method: get_contact_response")
     df = get_embeddings_data_frame()
-    records = get_semantic_records(df, query, n=50)
+    records = get_semantic_records(df, query, n=10)
     return records
