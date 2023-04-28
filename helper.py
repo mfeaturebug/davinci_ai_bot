@@ -76,5 +76,4 @@ def get_contact_response(query):
     print("Method: get_contact_response")
     df = get_embeddings_data_frame()
     records = get_semantic_records(df, query, n=50)
-
     return records
