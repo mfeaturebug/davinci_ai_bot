@@ -109,7 +109,7 @@ def get_gpt_response(query, emb_df):
             engine="text-davinci-003",
             # engine='text-curie-001',
             prompt=prompt,
-            temperature=0.6,
+            temperature=0.7,
             max_tokens=1200,
         )
     except Exception:
