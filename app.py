@@ -14,11 +14,15 @@ def main():
     if user_query != ":q" or user_query != "":
         # st.write(response['gpt_full_response']['choices'][0]['text'])
         # response = get_contact_response(user_query)
-        top_matches = get_top_matches(user_query, n=20)
+        with st.spinner('Wait for it...'):
+            top_matches = get_top_matches(user_query, n=20)
+            nlp_response = get_gpt_response(query=user_query, emb_df=top_matches.head(3))
+            nlp_response = '"' + nlp_response + '"'
+            st.text(nlp_response)
         # display = response[['similarity', 'product_description', 'product_name', 'product_url']]
-        nlp_response = get_gpt_response(query=user_query, emb_df=top_matches.head(3))
-        nlp_response = '"' + nlp_response + '"'
-        st.write(nlp_response)
+        # nlp_response = get_gpt_response(query=user_query, emb_df=top_matches.head(3))
+        # nlp_response = '"' + nlp_response + '"'
+        # st.write(nlp_response)
         # st.write(top_matches[['product_name', 'product_price',
         #                       'product_url']].head(3))
         return
